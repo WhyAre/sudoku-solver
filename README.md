@@ -23,7 +23,7 @@ cat file_name_of_board | go run .
 Well it uses some backtracking algorithm
 
 # Speed
-Written in golang to make it fast (Maybe C++ and rust might be faster but I'm just a golang fanboy for now)
+Written in golang to make it fast (Maybe C++ and rust might be faster but I'm just a gopher for now)
 ```shell
 time cat board-config | ./run 
 Solution
