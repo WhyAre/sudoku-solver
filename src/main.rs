@@ -58,7 +58,6 @@ fn get_next_cell(r: usize, c: usize, cols: usize) -> (usize, usize) {
 
 fn solve(r: usize, c: usize, board: &mut Vec<Vec<char>>) -> bool {
     if solved(r, c, board.len()) {
-        print_board(board);
         return true;
     }
 
@@ -67,7 +66,7 @@ fn solve(r: usize, c: usize, board: &mut Vec<Vec<char>>) -> bool {
         return solve(nr, nc, board);
     }
 
-    ('1'..='9').any(|val| {
+    let ret = ('1'..='9').any(|val| {
         if !is_valid(r, c, val, board) {
             return false;
         }
@@ -75,11 +74,15 @@ fn solve(r: usize, c: usize, board: &mut Vec<Vec<char>>) -> bool {
         let (nr, nc) = get_next_cell(r, c, board[r].len());
 
         board[r][c] = val;
-        let val = solve(nr, nc, board);
-        board[r][c] = EMPTY;
+        solve(nr, nc, board)
+    });
 
-        val
-    })
+    if ret {
+        true
+    } else {
+        board[r][c] = EMPTY;
+        false
+    }
 }
 
 fn main() {
@@ -92,8 +95,9 @@ fn main() {
     print_board(&board);
 
     println!("\nOutput");
-    let has_sol = solve(0, 0, &mut board);
-    if !has_sol {
+    if solve(0, 0, &mut board) {
+        print_board(&board);
+    } else {
         println!("No solution");
     }
 }
