@@ -1,9 +1,9 @@
 # Sudoku solver
 Doesn't everyone have their own version of a sudoku solver? Well here's mine.
 
-# Usage 
+# Usage
 ```bash
-$ cat board-config | go run .
+$ cat inputs/sudoku.1.in | cargo run
 ```
 
 # How it works
@@ -11,33 +11,30 @@ Backtracking algorithm
 
 # Example run
 ```shell
-$ cat board-config | go run .
-Solution
-===================
-5 3 4  6 7 8  1 9 2  
-6 7 2  1 9 5  3 4 8  
-1 9 8  3 4 2  5 6 7  
+$ cat inputs/sudoku.1.in | cargo run
+Input
+5.. 467 3.9
+9.3 81. 427
+174 2.3 ...
 
-8 5 9  7 6 1  4 2 3  
-4 2 6  8 5 3  9 7 1  
-7 1 3  9 2 4  8 5 6  
+231 976 854
+857 124 .9.
+496 3.8 172
 
-9 6 1  5 3 7  2 8 4  
-2 8 7  4 1 9  6 3 5  
-3 4 5  2 8 6  7 1 9  
+... .89 26.
+782 641 ..5
+.1. ... 7.8
 
+Output
+528 467 319
+963 815 427
+174 293 586
 
-Solution
-===================
-5 3 4  6 7 8  9 1 2  
-6 7 2  1 9 5  3 4 8  
-1 9 8  3 4 2  5 6 7  
+231 976 854
+857 124 693
+496 358 172
 
-8 5 9  7 6 1  4 2 3  
-4 2 6  8 5 3  7 9 1  
-7 1 3  9 2 4  8 5 6  
-
-9 6 1  5 3 7  2 8 4  
-2 8 7  4 1 9  6 3 5  
-3 4 5  2 8 6  1 7 9  
+345 789 261
+782 641 935
+619 532 748
 ```
